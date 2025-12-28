@@ -10,12 +10,13 @@ class BookRating extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(Icons.star, color: Colors.amberAccent),
         Gap(3),
         Text(rating, style: AppStyles.textStyle16),
         Gap(3),
-        Text(votes, style: AppStyles.textStyle16.copyWith(color: Colors.grey)),
+        Text("($votes)", style: AppStyles.textStyle16.copyWith(color: Colors.grey)),
       ],
     );
   }

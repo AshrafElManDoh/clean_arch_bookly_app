@@ -1,5 +1,5 @@
 import 'package:clean_arch_bookly_app/core/themes/app_styles.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/best_seller_item.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/book_item.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -17,11 +17,11 @@ class BestSellerSection extends StatelessWidget {
             children: [
               Text("Best Seller", style: AppStyles.textStyle18),
               Gap(20),
-              BestSellerItem(),
+              BookItem(),
             ],
           );
         } else {
-          return BestSellerItem();
+          return BookItem();
         }
       },
       separatorBuilder: (context, index) => Gap(10),

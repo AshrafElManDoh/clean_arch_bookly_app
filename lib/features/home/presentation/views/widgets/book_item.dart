@@ -1,21 +1,19 @@
+import 'package:clean_arch_bookly_app/core/router/app_router.dart';
 import 'package:clean_arch_bookly_app/core/themes/app_styles.dart';
-import 'package:clean_arch_bookly_app/features/details/presentation/views/details_view.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
+import 'package:go_router/go_router.dart';
 
-class BestSellerItem extends StatelessWidget {
-  const BestSellerItem({super.key});
+class BookItem extends StatelessWidget {
+  const BookItem({super.key});
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => DetailsView()),
-        );
+        GoRouter.of(context).push(AppRouter.detailsView);
       },
       child: SizedBox(
         height: 110,

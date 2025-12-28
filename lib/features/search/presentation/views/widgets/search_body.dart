@@ -25,7 +25,6 @@ class SearchBody extends StatelessWidget {
                 },
                 child: Icon(Icons.close, size: 30),
               ),
-
               Gap(10),
               Expanded(child: CustomSearchTextField()),
             ],

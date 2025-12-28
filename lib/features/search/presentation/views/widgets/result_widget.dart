@@ -1,5 +1,5 @@
 import 'package:clean_arch_bookly_app/core/themes/app_styles.dart';
-import 'package:clean_arch_bookly_app/features/search/presentation/views/widgets/search_list_view.dart';
+import 'package:clean_arch_bookly_app/features/search/presentation/views/widgets/result_list_view.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
@@ -13,9 +13,7 @@ class ResultWidget extends StatelessWidget {
       children: [
         Text("Result", style: AppStyles.textStyle18),
         Gap(20),
-        Expanded(
-          child: SearchListView(),
-        ),
+        Expanded(child: ResultListView()),
       ],
     );
   }

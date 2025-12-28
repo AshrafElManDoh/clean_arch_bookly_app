@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 
-class BestSellerSection extends StatelessWidget {
-  const BestSellerSection({super.key});
+class NewestBooksSection extends StatelessWidget {
+  const NewestBooksSection({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class BestSellerSection extends StatelessWidget {
           return Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Best Seller", style: AppStyles.textStyle18),
+              Text("Newest Books", style: AppStyles.textStyle18),
               Gap(20),
               BookItem(),
             ],

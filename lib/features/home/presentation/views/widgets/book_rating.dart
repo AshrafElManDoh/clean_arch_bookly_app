@@ -16,7 +16,10 @@ class BookRating extends StatelessWidget {
         Gap(3),
         Text(rating, style: AppStyles.textStyle16),
         Gap(3),
-        Text("($votes)", style: AppStyles.textStyle16.copyWith(color: Colors.grey)),
+        Text(
+          "($votes)",
+          style: AppStyles.textStyle16.copyWith(color: Colors.grey),
+        ),
       ],
     );
   }

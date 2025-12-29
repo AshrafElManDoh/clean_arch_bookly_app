@@ -25,10 +25,11 @@ class DetailsBody extends StatelessWidget {
                 DetailsAppBar(),
                 Gap(45),
                 Padding(
-              padding: EdgeInsets.symmetric(
-                  horizontal: MediaQuery.of(context).size.width * 0.18),
-              child:  CustomBookImage(imagePath: "assets/test/book.png"),
-            ),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: MediaQuery.of(context).size.width * 0.18,
+                  ),
+                  child: CustomBookImage(imagePath: "assets/test/book.png"),
+                ),
                 Gap(45),
                 Text("The Jungle Book", style: AppStyles.textStyle30),
                 // Gap(10),
@@ -53,7 +54,7 @@ class DetailsBody extends StatelessWidget {
           ),
         ),
         SliverToBoxAdapter(child: SimilarBooksListView()),
-        SliverToBoxAdapter(child: Gap(40),)
+        SliverToBoxAdapter(child: Gap(40)),
       ],
     );
   }

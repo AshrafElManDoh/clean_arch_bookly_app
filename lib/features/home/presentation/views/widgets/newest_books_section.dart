@@ -3,7 +3,6 @@ import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/b
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
-
 class NewestBooksSection extends StatelessWidget {
   const NewestBooksSection({super.key});
 

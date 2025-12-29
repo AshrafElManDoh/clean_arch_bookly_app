@@ -39,6 +39,7 @@ dependencies:
   go_router: ^17.0.1
   gap: ^3.0.1
   google_fonts: ^6.3.3
+  dartz: ^0.10.1
 
 dev_dependencies:
   flutter_test:

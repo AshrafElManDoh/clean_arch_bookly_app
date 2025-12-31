@@ -1,5 +1,5 @@
 import 'package:clean_arch_bookly_app/core/base_fuctions/cache_box.dart';
-import 'package:clean_arch_bookly_app/core/base_fuctions/get_list.dart';
+import 'package:clean_arch_bookly_app/core/base_fuctions/get_books_list.dart';
 import 'package:clean_arch_bookly_app/core/constants/constants.dart';
 import 'package:clean_arch_bookly_app/core/network/api_service.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
@@ -18,7 +18,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     var response = await apiService.get(
       endPoint: "volumes?filter=free-ebooks&q=sports",
     );
-    List<BookEntity> books = getList(response);
+    List<BookEntity> books = getBooksList(response);
     cacheBooks(books, kOpenFeaturedBox);
     return books;
   }
@@ -28,7 +28,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     var response = await apiService.get(
       endPoint: "volumes?filter=free-ebooks&q=sports&sorting=newest",
     );
-    List<BookEntity> books = getList(response);
+    List<BookEntity> books = getBooksList(response);
     cacheBooks(books, kOpenNewestBox);
     return books;
   }

@@ -2,9 +2,7 @@ import 'package:clean_arch_bookly_app/core/errors/failure.dart';
 import 'package:dio/dio.dart';
 
 class ServerFailure extends Failure {
-  final String errMsg;
-
-  ServerFailure({required this.errMsg});
+  ServerFailure({required super.errMsg});
 
   factory ServerFailure.fromDioExceptions(DioException dioException) {
     switch (dioException.type) {

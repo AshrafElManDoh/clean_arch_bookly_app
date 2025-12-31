@@ -1,7 +1,7 @@
 import 'package:clean_arch_bookly_app/core/base_fuctions/cache_box.dart';
+import 'package:clean_arch_bookly_app/core/base_fuctions/get_list.dart';
 import 'package:clean_arch_bookly_app/core/constants/constants.dart';
 import 'package:clean_arch_bookly_app/core/network/api_service.dart';
-import 'package:clean_arch_bookly_app/features/home/data/models/book_model/book_model.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 
 abstract class HomeRemoteDataSource {
@@ -30,14 +30,6 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     );
     List<BookEntity> books = getList(response);
     cacheBooks(books, kOpenNewestBox);
-    return books;
-  }
-
-  List<BookEntity> getList(Map<String, dynamic> response) {
-    List<BookEntity> books = [];
-    for (var bookMap in response['items']) {
-      books.add(BookModel.fromJson(bookMap));
-    }
     return books;
   }
 }

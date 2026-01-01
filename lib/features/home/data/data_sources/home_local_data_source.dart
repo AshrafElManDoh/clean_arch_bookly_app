@@ -3,15 +3,25 @@ import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.
 import 'package:hive/hive.dart';
 
 abstract class HomeLocalDataSource {
-  List<BookEntity> fetchFeaturedBooks();
+  List<BookEntity> fetchFeaturedBooks({int pageNumber = 0});
   List<BookEntity> fetchNewestBooks();
 }
 
 class HomeLocalDataSourceImpl implements HomeLocalDataSource {
   @override
-  List<BookEntity> fetchFeaturedBooks() {
+  List<BookEntity> fetchFeaturedBooks({int pageNumber = 0}) {
     var box = Hive.box<BookEntity>(kOpenFeaturedBox);
-    return box.values.toList();
+    int length = box.values.length;
+    int startIndex = pageNumber * 10;
+    if (startIndex >= length) {
+      return [];
+    }
+
+    int endIndex = (pageNumber + 1) * 10;
+    if (endIndex > length) {
+      endIndex = length;
+    }
+    return box.values.toList().sublist(startIndex, endIndex);
   }
 
   @override

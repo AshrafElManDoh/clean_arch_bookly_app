@@ -5,7 +5,9 @@ import 'package:clean_arch_bookly_app/core/themes/app_themes.dart';
 import 'package:clean_arch_bookly_app/features/home/data/repos/home_repo_imp.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/use_cases/fetch_featured_books_use_case.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/use_cases/fetch_newest_books_use_case.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/manager/newest_books_cubit/newest_books_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -32,6 +34,11 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
             FetchFeaturedBooksUseCase(homeRepo: getIt.get<HomeRepoImp>()),
+          )..fetchFeaturedBooks(),
+        ),
+        BlocProvider(
+          create: (context) => NewestBooksCubit(
+            FetchNewestBooksUseCase(homeRepo: getIt.get<HomeRepoImp>()),
           ),
         ),
       ],

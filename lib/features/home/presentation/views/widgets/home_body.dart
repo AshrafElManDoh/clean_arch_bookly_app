@@ -1,6 +1,6 @@
 import 'package:clean_arch_bookly_app/core/constants/app_sizes.dart';
+import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/featured_book_list_view_bloc_builder.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/newest_books_section.dart';
-import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/featured_book_list_view.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/home_app_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
@@ -23,7 +23,7 @@ class HomeBody extends StatelessWidget {
                 ),
                 child: HomeAppBar(),
               ),
-              FeaturedBookListView(),
+              FeaturedBookListViewBlocBuilder(),
               Gap(20),
             ],
           ),
@@ -34,39 +34,7 @@ class HomeBody extends StatelessWidget {
           padding: EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
           sliver: NewestBooksSection(),
         ),
-
-        // SliverPadding(
-        //   padding: EdgeInsets.symmetric(horizontal: AppSizes.horizontalPadding),
-        //   sliver: SliverList.separated(
-        //     itemBuilder: (context, index) => BestSellerItem(),
-        //     separatorBuilder: (context, index) => Gap(10),
-        //     itemCount: 10,
-        //   ),
-        // ),
       ],
     );
-
-    // return Column(
-    //   crossAxisAlignment: CrossAxisAlignment.start,
-    //   children: [
-    //     Padding(
-    //       padding: const EdgeInsets.symmetric(
-    //         horizontal: AppSizes.horizontalPadding,
-    //         vertical: AppSizes.verticalPadding,
-    //       ),
-    //       child: HomeAppBar(),
-    //     ),
-    //     FeaturedBookListView(),
-    //     Gap(20),
-    //     Expanded(
-    //       child: Padding(
-    //         padding: const EdgeInsets.symmetric(
-    //           horizontal: AppSizes.horizontalPadding,
-    //         ),
-    //         child: BestSellerSection(),
-    //       ),
-    //     ),
-    //   ],
-    // );
   }
 }

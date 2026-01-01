@@ -1,5 +1,6 @@
 import 'package:hive/hive.dart';
 part 'book_entity.g.dart';
+
 @HiveType(typeId: 0)
 class BookEntity {
   @HiveField(0)
@@ -26,4 +27,16 @@ class BookEntity {
     required this.votes,
     required this.bookId,
   });
+
+  factory BookEntity.empty() {
+    return BookEntity(
+      image: '',
+      title: '',
+      authorName: '',
+      price: '',
+      rating: 0,
+      votes: 0,
+      bookId: '',
+    );
+  }
 }

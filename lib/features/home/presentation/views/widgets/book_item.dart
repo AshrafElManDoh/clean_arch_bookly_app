@@ -1,5 +1,6 @@
 import 'package:clean_arch_bookly_app/core/router/app_router.dart';
 import 'package:clean_arch_bookly_app/core/themes/app_styles.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
@@ -7,7 +8,8 @@ import 'package:gap/gap.dart';
 import 'package:go_router/go_router.dart';
 
 class BookItem extends StatelessWidget {
-  const BookItem({super.key});
+  const BookItem({super.key, required this.book});
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +21,7 @@ class BookItem extends StatelessWidget {
         height: 110,
         child: Row(
           children: [
-            CustomBookImage(imagePath: "assets/test/book.png"),
+            CustomBookImage(imagePath: book.image ?? ''),
             Gap(10),
             Expanded(
               child: Column(
@@ -27,20 +29,25 @@ class BookItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "Harry Potter and the Goblet of Fire",
+                    book.title,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     style: AppStyles.textStyle20,
                   ),
                   Text(
-                    "Author",
+                    book.authorName,
+                    maxLines: 1,
+                    overflow: TextOverflow.ellipsis,
                     style: AppStyles.textStyle14.copyWith(color: Colors.grey),
                   ),
                   Row(
                     children: [
-                      Text("19.99 \$", style: AppStyles.textStyle20),
+                      Text(book.price ?? "Free", style: AppStyles.textStyle20),
                       Spacer(),
-                      BookRating(rating: "4.8", votes: "2390"),
+                      BookRating(
+                        rating: book.rating?.toString() ?? "0",
+                        votes: book.votes?.toString() ?? "0",
+                      ),
                     ],
                   ),
                 ],

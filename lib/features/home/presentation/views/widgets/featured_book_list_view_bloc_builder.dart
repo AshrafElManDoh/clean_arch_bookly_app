@@ -25,12 +25,12 @@ class _FeaturedBookListViewBlocBuilderState
         }
       },
       builder: (context, state) {
-        if (state is FeaturedBooksFailure) {
-          return Center(child: Text(state.errMsg));
-        } else if (state is FeaturedBooksSuccess ||
-            state is FeaturedBooksPaginationLoading) {
-          return FeaturedBookListView(books: books);
-        }
+        // if (state is FeaturedBooksFailure) {
+        //   return Center(child: Text(state.errMsg));
+        // } else if (state is FeaturedBooksSuccess ||
+        //     state is FeaturedBooksPaginationLoading) {
+        //   return FeaturedBookListView(books: books);
+        // }
         return Skeletonizer(
           enabled: true,
           enableSwitchAnimation: true,

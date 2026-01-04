@@ -6,7 +6,7 @@ import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.
 
 abstract class HomeRemoteDataSource {
   Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0});
-  Future<List<BookEntity>> fetchNewestBooks();
+  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0});
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
@@ -16,7 +16,8 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   @override
   Future<List<BookEntity>> fetchFeaturedBooks({int pageNumber = 0}) async {
     var response = await apiService.get(
-      endPoint: "volumes?filter=free-ebooks&q=sports&startIndex=${pageNumber * 10}",
+      endPoint:
+          "volumes?filter=free-ebooks&q=programming&startIndex=${pageNumber * 10}",
     );
     List<BookEntity> books = getBooksList(response);
     cacheBooks(books, kOpenFeaturedBox);
@@ -24,9 +25,10 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   }
 
   @override
-  Future<List<BookEntity>> fetchNewestBooks() async {
+  Future<List<BookEntity>> fetchNewestBooks({int pageNumber = 0}) async {
     var response = await apiService.get(
-      endPoint: "volumes?filter=free-ebooks&q=sports&sorting=newest",
+      endPoint:
+          "volumes?filter=free-ebooks&q=sports&sorting=newest&startIndex=${pageNumber * 10}",
     );
     List<BookEntity> books = getBooksList(response);
     cacheBooks(books, kOpenNewestBox);

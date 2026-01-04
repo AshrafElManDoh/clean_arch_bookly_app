@@ -1,2 +1,2 @@
 const String kOpenFeaturedBox = 'featuredBox' ;
-const String kOpenNewestBox = 'featuredBox' ;
+const String kOpenNewestBox = 'newestBox' ;

@@ -3,13 +3,15 @@ import 'package:clean_arch_bookly_app/core/themes/app_styles.dart';
 import 'package:clean_arch_bookly_app/features/details/presentation/views/widgets/book_actions.dart';
 import 'package:clean_arch_bookly_app/features/details/presentation/views/widgets/details_app_bar.dart';
 import 'package:clean_arch_bookly_app/features/details/presentation/views/widgets/similar_books_list_view.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/book_rating.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/views/widgets/custom_book_image.dart';
 import 'package:flutter/material.dart';
 import 'package:gap/gap.dart';
 
 class DetailsBody extends StatelessWidget {
-  const DetailsBody({super.key});
+  const DetailsBody({super.key, required this.book});
+  final BookEntity book;
 
   @override
   Widget build(BuildContext context) {
@@ -28,17 +30,20 @@ class DetailsBody extends StatelessWidget {
                   padding: EdgeInsets.symmetric(
                     horizontal: MediaQuery.of(context).size.width * 0.18,
                   ),
-                  child: CustomBookImage(imagePath: "assets/test/book.png"),
+                  child: CustomBookImage(imagePath: book.image ?? ""),
                 ),
                 Gap(45),
-                Text("The Jungle Book", style: AppStyles.textStyle30),
+                Text(book.title, style: AppStyles.textStyle30),
                 // Gap(10),
                 Text(
-                  "Rudyard Kipling",
+                  book.authorName,
                   style: AppStyles.textStyle14.copyWith(color: Colors.grey),
                 ),
                 Gap(10),
-                BookRating(rating: "4.8", votes: "2540"),
+                BookRating(
+                  rating: book.rating?.toString() ?? "0",
+                  votes: book.votes?.toString() ?? "0",
+                ),
                 Gap(40),
                 BookActions(),
                 Gap(30),

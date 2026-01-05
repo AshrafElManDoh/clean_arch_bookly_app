@@ -15,12 +15,7 @@ import 'package:hive_flutter/adapters.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
-  await Hive.initFlutter();
-  Hive.registerAdapter(BookEntityAdapter());
-  await Hive.openBox<BookEntity>(kOpenFeaturedBox);
-  await Hive.openBox<BookEntity>(kOpenNewestBox);
-  setupServiceLocator();
+  await _initApp();
   runApp(const MyApp());
 }
 
@@ -51,4 +46,19 @@ class MyApp extends StatelessWidget {
       ),
     );
   }
+}
+
+Future<void> _initApp() async {
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
+  await _initHive();
+  setupServiceLocator();
+}
+
+Future<void> _initHive() async {
+  await Hive.initFlutter();
+  Hive.registerAdapter(BookEntityAdapter());
+  await Future.wait([
+    Hive.openBox<BookEntity>(kOpenFeaturedBox),
+    Hive.openBox<BookEntity>(kOpenNewestBox),
+  ]);
 }

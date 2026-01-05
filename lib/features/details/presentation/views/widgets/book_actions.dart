@@ -1,8 +1,11 @@
 import 'package:clean_arch_bookly_app/core/base_widgets/custom_button.dart';
+import 'package:clean_arch_bookly_app/core/router/app_router.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class BookActions extends StatelessWidget {
-  const BookActions({super.key});
+  const BookActions({super.key, required this.previewURL});
+  final String previewURL;
 
   @override
   Widget build(BuildContext context) {
@@ -28,6 +31,9 @@ class BookActions extends StatelessWidget {
               topRight: Radius.circular(15),
               bottomRight: Radius.circular(15),
             ),
+            onTap: () => GoRouter.of(
+              context,
+            ).push(AppRouter.previewView, extra: previewURL),
           ),
         ),
       ],

@@ -48,7 +48,7 @@ class DetailsBody extends StatelessWidget {
                   votes: book.votes?.toString() ?? "0",
                 ),
                 Gap(40),
-                BookActions(),
+                BookActions(previewURL: book.url),
                 Gap(30),
                 Align(
                   alignment: Alignment.topLeft,

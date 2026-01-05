@@ -17,6 +17,10 @@ class BookEntity {
   final double? rating;
   @HiveField(6)
   final int? votes;
+  @HiveField(7)
+  final String? category;
+  @HiveField(8)
+  final String url;
 
   BookEntity({
     required this.image,
@@ -26,6 +30,8 @@ class BookEntity {
     required this.rating,
     required this.votes,
     required this.bookId,
+    this.category,
+    required this.url,
   });
 
   factory BookEntity.empty() {
@@ -37,6 +43,7 @@ class BookEntity {
       rating: 0,
       votes: 0,
       bookId: '',
+      url: '',
     );
   }
 }

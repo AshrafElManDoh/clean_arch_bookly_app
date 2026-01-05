@@ -18,7 +18,7 @@ class DetailsView extends StatelessWidget {
         body: BlocProvider(
           create: (context) => SimilarBooksCubit(
             FetchSimilarBooksUseCase(detailsRepo: getIt.get<DetailsRepoImp>()),
-          )..fetchSimilarBooks(category: "sports"),
+          )..fetchSimilarBooks(category: book.category ?? "Sports"),
           child: DetailsBody(book: book),
         ),
       ),

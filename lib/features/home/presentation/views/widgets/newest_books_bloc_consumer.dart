@@ -20,7 +20,8 @@ class NewestBooksBlocConsumer extends StatelessWidget {
       builder: (context, state) {
         if (state is NewestBooksFailure) {
           return SliverToBoxAdapter(child: Text(state.errMsg));
-        } else if (state is NewestBooksSuccess || state is NewestBooksPaginationLoading) {
+        } else if (state is NewestBooksSuccess ||
+            state is NewestBooksPaginationLoading) {
           return SliverPadding(
             padding: EdgeInsets.symmetric(
               horizontal: AppSizes.horizontalPadding,
@@ -49,6 +50,8 @@ class NewestBooksBlocConsumer extends StatelessWidget {
                   title: "xxxxxxxxxxxx",
                   authorName: "authorName",
                   price: "Free",
+                  url: '',
+                  category: '',
                   rating: 0,
                   votes: 0,
                   bookId: "bookId",

@@ -1,5 +1,5 @@
 import 'package:clean_arch_bookly_app/core/base_fuctions/get_it.dart';
-import 'package:clean_arch_bookly_app/features/details/data/repos/details_repo_imp.dart';
+import 'package:clean_arch_bookly_app/features/details/domain/repos/details_repo.dart';
 import 'package:clean_arch_bookly_app/features/details/domain/use_cases/fetch_similar_books_use_case.dart';
 import 'package:clean_arch_bookly_app/features/details/presentation/manager/similar_books_cubit/similar_books_cubit.dart';
 import 'package:clean_arch_bookly_app/features/details/presentation/views/widgets/details_body.dart';
@@ -17,7 +17,7 @@ class DetailsView extends StatelessWidget {
       child: Scaffold(
         body: BlocProvider(
           create: (context) => SimilarBooksCubit(
-            FetchSimilarBooksUseCase(detailsRepo: getIt.get<DetailsRepoImp>()),
+            FetchSimilarBooksUseCase(detailsRepo: getIt.get<DetailsRepo>()),
           )..fetchSimilarBooks(category: book.category ?? "Sports"),
           child: DetailsBody(book: book),
         ),

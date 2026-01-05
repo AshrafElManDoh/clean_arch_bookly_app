@@ -2,8 +2,8 @@ import 'package:clean_arch_bookly_app/core/base_fuctions/get_it.dart';
 import 'package:clean_arch_bookly_app/core/constants/constants.dart';
 import 'package:clean_arch_bookly_app/core/router/app_router.dart';
 import 'package:clean_arch_bookly_app/core/themes/app_themes.dart';
-import 'package:clean_arch_bookly_app/features/home/data/repos/home_repo_imp.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/entities/book_entity.dart';
+import 'package:clean_arch_bookly_app/features/home/domain/repos/home_repo.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/use_cases/fetch_featured_books_use_case.dart';
 import 'package:clean_arch_bookly_app/features/home/domain/use_cases/fetch_newest_books_use_case.dart';
 import 'package:clean_arch_bookly_app/features/home/presentation/manager/featured_books_cubit/featured_books_cubit.dart';
@@ -28,12 +28,12 @@ class MyApp extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => FeaturedBooksCubit(
-            FetchFeaturedBooksUseCase(homeRepo: getIt.get<HomeRepoImp>()),
+            FetchFeaturedBooksUseCase(homeRepo: getIt.get<HomeRepo>()),
           )..fetchFeaturedBooks(),
         ),
         BlocProvider(
           create: (context) => NewestBooksCubit(
-            FetchNewestBooksUseCase(homeRepo: getIt.get<HomeRepoImp>()),
+            FetchNewestBooksUseCase(homeRepo: getIt.get<HomeRepo>()),
           )..fetchNewestBooks(),
         ),
       ],
